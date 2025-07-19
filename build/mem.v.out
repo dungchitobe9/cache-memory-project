@@ -1,0 +1,79 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "D:\Apps\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\Apps\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\Apps\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\Apps\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\Apps\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "D:\Apps\iverilog\lib\ivl\v2009.vpi";
+S_000002337431a350 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0000023374316620 .scope module, "mem" "mem" 3 10;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clock";
+    .port_info 1 /INPUT 8 "data";
+    .port_info 2 /INPUT 6 "rdaddress";
+    .port_info 3 /INPUT 1 "rden";
+    .port_info 4 /INPUT 6 "wraddress";
+    .port_info 5 /INPUT 1 "wren";
+    .port_info 6 /OUTPUT 8 "q";
+P_00000233743167b0 .param/l "DEPTH" 0 3 13, +C4<00000000000000000000000001000000>;
+P_00000233743167e8 .param/str "FILE" 0 3 14, "\000";
+P_0000023374316820 .param/l "INIT" 0 3 15, +C4<00000000000000000000000000000000>;
+P_0000023374316858 .param/l "WIDTH" 0 3 12, +C4<00000000000000000000000000001000>;
+o0000023374222fd8 .functor BUFZ 1, C4<z>; HiZ drive
+v000002337431bf40_0 .net "clock", 0 0, o0000023374222fd8;  0 drivers
+o0000023374223008 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0000023374204ac0_0 .net "data", 7 0, o0000023374223008;  0 drivers
+v0000023374316c60 .array "mem", 63 0, 7 0;
+v000002337431a4e0_0 .var "q", 7 0;
+o0000023374223068 .functor BUFZ 6, C4<zzzzzz>; HiZ drive
+v0000023374316d40_0 .net "rdaddress", 5 0, o0000023374223068;  0 drivers
+o0000023374223098 .functor BUFZ 1, C4<z>; HiZ drive
+v00000233743168a0_0 .net "rden", 0 0, o0000023374223098;  0 drivers
+o00000233742230c8 .functor BUFZ 6, C4<zzzzzz>; HiZ drive
+v0000023374316940_0 .net "wraddress", 5 0, o00000233742230c8;  0 drivers
+o00000233742230f8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000233743169e0_0 .net "wren", 0 0, o00000233742230f8;  0 drivers
+E_00000233743188e0 .event posedge, v000002337431bf40_0;
+    .scope S_0000023374316620;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_0000023374316620;
+T_1 ;
+    %wait E_00000233743188e0;
+    %load/vec4 v00000233743169e0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.0, 8;
+    %load/vec4 v0000023374204ac0_0;
+    %load/vec4 v0000023374316940_0;
+    %pad/u 8;
+    %ix/vec4 3;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0000023374316c60, 0, 4;
+T_1.0 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0000023374316620;
+T_2 ;
+    %wait E_00000233743188e0;
+    %load/vec4 v00000233743168a0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.0, 8;
+    %load/vec4 v0000023374316d40_0;
+    %pad/u 8;
+    %ix/vec4 4;
+    %load/vec4a v0000023374316c60, 4;
+    %assign/vec4 v000002337431a4e0_0, 0;
+T_2.0 ;
+    %jmp T_2;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "mem.v";
