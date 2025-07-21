@@ -1,10 +1,3 @@
-
-/*
- * Single-ported memory module.
- *
- * Public domain.
- *
- */
  `include "clog2.v"
 
 module mem
