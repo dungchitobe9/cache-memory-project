@@ -69,9 +69,9 @@ module d_cache_test;
   always
     begin
 
-      // basic writeback /////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //writeback /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-      /*# 100; // This should be a miss
+      /*# 100; // miss
 
       d_cache_addr <= 32'h00000008;
       d_cache_din <= 0;
@@ -129,21 +129,21 @@ module d_cache_test;
 
       // repeated writes (w/ offset) /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-      # 100; // This should be a miss
+      # 100; // miss
 
       d_cache_addr <= 32'h00000008;
       d_cache_din <= 0;
       d_cache_rden <= 1;
       d_cache_wren <= 0;
 
-      # 100; // This should be a hit
+      # 100; // hit
 
       d_cache_addr <= 32'h00000008;
       d_cache_din <= 32'hBADDBEEF;
       d_cache_rden <= 0;
       d_cache_wren <= 1;
 
-      # 100; // This should be a hit
+      # 100; // hit
 
       d_cache_addr <= 32'h0000000B;
       d_cache_din <= 32'h00000000;
@@ -157,42 +157,42 @@ module d_cache_test;
       d_cache_rden <= 0;
       d_cache_wren <= 1;
 
-      # 100; // This should be a miss
+      # 100; // miss
 
       d_cache_addr <= 32'h10000008;
       d_cache_din <= 0;
       d_cache_rden <= 1;
       d_cache_wren <= 0;
 
-      # 100; // This should be a miss
+      # 100; // miss
 
       d_cache_addr <= 32'h20000008;
       d_cache_din <= 0;
       d_cache_rden <= 1;
       d_cache_wren <= 0;
 
-      # 100; // This should be a miss
+      # 100; // miss
 
       d_cache_addr <= 32'h30000008;
       d_cache_din <= 0;
       d_cache_rden <= 1;
       d_cache_wren <= 0;
 
-      # 100; // This should be a miss and eviction
+      # 100; // a miss and eviction
 
       d_cache_addr <= 32'h40000008;
       d_cache_din <= 0;
       d_cache_rden <= 1;
       d_cache_wren <= 0;
 
-      # 100; // This should be a miss (evicted)
+      # 100; // miss (evicted)
 
       d_cache_addr <= 32'h00000008;
       d_cache_din <= 0;
       d_cache_rden <= 1;
       d_cache_wren <= 0;
 
-      # 100; // This should be a miss
+      # 100; // miss
 
       d_cache_addr <= 32'h10000008;
       d_cache_din <= 32'hBADDBEEF;
